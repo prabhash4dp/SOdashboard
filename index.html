@@ -7,7 +7,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>India Post - Hindupur Division Dashboard</title>
+<title>Hindupur Division Performance Dashboard</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -25,9 +25,9 @@
 
 <header>
 
-<div class="logo-area">
+<div class="header-left">
 
-<img src="assets/india-post-logo.png" class="logo">
+<img src="assets/india-post-logo.png" alt="India Post" class="logo">
 
 <div>
 
@@ -35,13 +35,15 @@
 
 <h2>Hindupur Division Performance Dashboard</h2>
 
-<p id="lastUpdated">Last Updated : --</p>
+<p id="lastUpdated"></p>
 
 </div>
 
 </div>
 
 </header>
+
+<!-- Summary Cards -->
 
 <section class="summary">
 
@@ -81,11 +83,13 @@
 
 <h3>Achievement</h3>
 
-<h1 id="achievement">0%</h1>
+<h1 id="achievementTotal">0%</h1>
 
 </div>
 
 </section>
+
+<!-- Filters -->
 
 <section class="filters">
 
@@ -107,13 +111,17 @@
 
 </select>
 
-<input type="text"
+<input
+
+type="text"
 
 id="searchOffice"
 
-placeholder="Search Office Code / BO Name">
+placeholder="Search Office Code / Office Name">
 
 </section>
+
+<!-- Office Details -->
 
 <section class="officeCard">
 
@@ -121,93 +129,35 @@ placeholder="Search Office Code / BO Name">
 
 <table>
 
-<tr>
+<tr><th>Office Code</th><td id="officeCode">-</td></tr>
 
-<th>Office Code</th>
+<tr><th>Sub Division</th><td id="subDiv">-</td></tr>
 
-<td id="officeCode">-</td>
+<tr><th>SO Name</th><td id="so">-</td></tr>
 
-</tr>
+<tr><th>BO Name</th><td id="bo">-</td></tr>
 
-<tr>
+<tr><th>FY Target</th><td id="fyTarget">-</td></tr>
 
-<th>Sub Division</th>
+<tr><th>Target upto Month</th><td id="targetMonth">-</td></tr>
 
-<td id="subDiv">-</td>
+<tr><th>Opened</th><td id="opened">-</td></tr>
 
-</tr>
+<tr><th>Closed</th><td id="closed">-</td></tr>
 
-<tr>
+<tr><th>Net Addition</th><td id="net">-</td></tr>
 
-<th>SO Name</th>
-
-<td id="so">-</td>
-
-</tr>
-
-<tr>
-
-<th>BO Name</th>
-
-<td id="bo">-</td>
-
-</tr>
-
-<tr>
-
-<th>FY Target</th>
-
-<td id="target">-</td>
-
-</tr>
-
-<tr>
-
-<th>Target upto Month</th>
-
-<td id="targetMonth">-</td>
-
-</tr>
-
-<tr>
-
-<th>Opened</th>
-
-<td id="opened">-</td>
-
-</tr>
-
-<tr>
-
-<th>Closed</th>
-
-<td id="closed">-</td>
-
-</tr>
-
-<tr>
-
-<th>Net Addition</th>
-
-<td id="net">-</td>
-
-</tr>
-
-<tr>
-
-<th>Achievement</th>
-
-<td id="ach">-</td>
-
-</tr>
+<tr><th>Achievement</th><td id="achievement">-</td></tr>
 
 </table>
 
 </section>
 
+<!-- Progress -->
+
 <section class="progress">
 
-<h2>Target Achievement</h2>
+<h2>Achievement Progress</h2>
 
 <div class="progressbar">
 
@@ -218,6 +168,8 @@ placeholder="Search Office Code / BO Name">
 <p id="progressText">0%</p>
 
 </section>
+
+<!-- Charts -->
 
 <section class="charts">
 
@@ -231,13 +183,15 @@ placeholder="Search Office Code / BO Name">
 
 <div class="chartCard">
 
-<h2>Target Achievement</h2>
+<h2>Achievement</h2>
 
 <canvas id="pieChart"></canvas>
 
 </div>
 
 </section>
+
+<!-- Top 10 -->
 
 <section class="ranking">
 
@@ -267,13 +221,17 @@ placeholder="Search Office Code / BO Name">
 
 </section>
 
+<!-- Full Report -->
+
 <section class="report">
 
-<h2>Complete Office Report</h2>
+<h2>Complete Report</h2>
 
-<input type="text" id="tableSearch"
+<input type="text"
 
-placeholder="Search Office...">
+id="tableSearch"
+
+placeholder="Search...">
 
 <table id="reportTable">
 
@@ -313,9 +271,9 @@ placeholder="Search Office...">
 
 <p>
 
-Designed for
+Designed for Superintendent of Post Offices
 
-Superintendent of Post Offices
+<br>
 
 Hindupur Division
 
