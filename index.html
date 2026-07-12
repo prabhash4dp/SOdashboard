@@ -1,27 +1,330 @@
-<h1>📮 Hindupur Division Dashboard</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-<select id="subDivision">
-<option value="">Select Sub Division</option>
-</select>
+<head>
 
-<select id="so">
-<option value="">Select SO</option>
-</select>
+<meta charset="UTF-8">
 
-<select id="bo">
-<option value="">Select BO</option>
-</select>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="card">
-<h2 id="office">Office Name</h2>
+<title>India Post - Hindupur Division Dashboard</title>
 
-<p>Opened : <span id="opened">0</span></p>
+<link rel="stylesheet" href="style.css">
 
-<p>Closed : <span id="closed">0</span></p>
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-<p>Net Addition : <span id="net">0</span></p>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo-area">
+
+<img src="assets/india-post-logo.png" class="logo">
+
+<div>
+
+<h1>INDIA POST</h1>
+
+<h2>Hindupur Division Performance Dashboard</h2>
+
+<p id="lastUpdated">Last Updated : --</p>
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</div>
+
+</header>
+
+<section class="summary">
+
+<div class="card">
+
+<h3>Total Offices</h3>
+
+<h1 id="officeCount">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Opened</h3>
+
+<h1 id="openedTotal">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Closed</h3>
+
+<h1 id="closedTotal">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Net Addition</h3>
+
+<h1 id="netTotal">0</h1>
+
+</div>
+
+<div class="card">
+
+<h3>Achievement</h3>
+
+<h1 id="achievement">0%</h1>
+
+</div>
+
+</section>
+
+<section class="filters">
+
+<select id="subDivision">
+
+<option value="">Select Sub Division</option>
+
+</select>
+
+<select id="soName">
+
+<option value="">Select SO</option>
+
+</select>
+
+<select id="boName">
+
+<option value="">Select BO</option>
+
+</select>
+
+<input type="text"
+
+id="searchOffice"
+
+placeholder="Search Office Code / BO Name">
+
+</section>
+
+<section class="officeCard">
+
+<h2>Office Details</h2>
+
+<table>
+
+<tr>
+
+<th>Office Code</th>
+
+<td id="officeCode">-</td>
+
+</tr>
+
+<tr>
+
+<th>Sub Division</th>
+
+<td id="subDiv">-</td>
+
+</tr>
+
+<tr>
+
+<th>SO Name</th>
+
+<td id="so">-</td>
+
+</tr>
+
+<tr>
+
+<th>BO Name</th>
+
+<td id="bo">-</td>
+
+</tr>
+
+<tr>
+
+<th>FY Target</th>
+
+<td id="target">-</td>
+
+</tr>
+
+<tr>
+
+<th>Target upto Month</th>
+
+<td id="targetMonth">-</td>
+
+</tr>
+
+<tr>
+
+<th>Opened</th>
+
+<td id="opened">-</td>
+
+</tr>
+
+<tr>
+
+<th>Closed</th>
+
+<td id="closed">-</td>
+
+</tr>
+
+<tr>
+
+<th>Net Addition</th>
+
+<td id="net">-</td>
+
+</tr>
+
+<tr>
+
+<th>Achievement</th>
+
+<td id="ach">-</td>
+
+</tr>
+
+</table>
+
+</section>
+
+<section class="progress">
+
+<h2>Target Achievement</h2>
+
+<div class="progressbar">
+
+<div class="progressfill" id="progressFill"></div>
+
+</div>
+
+<p id="progressText">0%</p>
+
+</section>
+
+<section class="charts">
+
+<div class="chartCard">
+
+<h2>Opened vs Closed</h2>
+
+<canvas id="barChart"></canvas>
+
+</div>
+
+<div class="chartCard">
+
+<h2>Target Achievement</h2>
+
+<canvas id="pieChart"></canvas>
+
+</div>
+
+</section>
+
+<section class="ranking">
+
+<h2>Top 10 Offices</h2>
+
+<table id="topTable">
+
+<thead>
+
+<tr>
+
+<th>Rank</th>
+
+<th>Office</th>
+
+<th>Net Addition</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</section>
+
+<section class="report">
+
+<h2>Complete Office Report</h2>
+
+<input type="text" id="tableSearch"
+
+placeholder="Search Office...">
+
+<table id="reportTable">
+
+<thead>
+
+<tr>
+
+<th>Office Code</th>
+
+<th>Sub Division</th>
+
+<th>SO</th>
+
+<th>BO</th>
+
+<th>Target</th>
+
+<th>Opened</th>
+
+<th>Closed</th>
+
+<th>Net</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+</section>
+
+<footer>
+
+<p>
+
+Designed for
+
+Superintendent of Post Offices
+
+Hindupur Division
+
+</p>
+
+</footer>
+
 <script src="script.js"></script>
+
+</body>
+
+</html>
