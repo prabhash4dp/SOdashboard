@@ -1,0 +1,116 @@
+/* General */
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f4f4;
+}
+
+/* Header */
+header{
+    background:#c62828;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+
+header h1{
+    margin:0;
+    font-size:30px;
+}
+
+header h2{
+    margin:8px 0 5px;
+    font-size:22px;
+}
+
+header p{
+    margin:0;
+    font-size:15px;
+}
+
+/* Main Container */
+.container{
+    max-width:500px;
+    margin:25px auto;
+    padding:20px;
+}
+
+/* Dropdown */
+label{
+    font-weight:bold;
+    font-size:18px;
+}
+
+select{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    margin-bottom:20px;
+    border:2px solid #c62828;
+    border-radius:8px;
+    font-size:16px;
+    background:#fff;
+}
+
+/* Card */
+.card{
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,.15);
+}
+
+.card h2{
+    text-align:center;
+    color:#c62828;
+    margin-bottom:20px;
+}
+
+/* Cards Row */
+.row{
+    display:flex;
+    gap:15px;
+}
+
+.box{
+    flex:1;
+    background:#fff8e1;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+    box-shadow:0 2px 6px rgba(0,0,0,.1);
+}
+
+.box h3{
+    margin:0;
+    color:#555;
+    font-size:18px;
+}
+
+.box p{
+    margin-top:10px;
+    font-size:30px;
+    font-weight:bold;
+    color:#2e7d32;
+}
+
+/* Net Addition */
+.net{
+    margin-top:20px;
+    background:#e8f5e9;
+}
+
+.net p{
+    color:#1565c0;
+    font-size:36px;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:15px;
+    color:#666;
+    font-size:14px;
+    margin-top:20px

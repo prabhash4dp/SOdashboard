@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hindupur Division - SO Daily Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+
+<body>
+
+<header>
+<h1>📮 India Post</h1>
+<h2>Hindupur Division</h2>
+<p>SO Daily Performance Dashboard</p>
+</header>
+
+<div class="container">
+
+<label><b>Select Your Office</b></label>
+
+<select id="officeSelect">
+<option>Loading...</option>
+</select>
+
+<div class="card">
+
+<h2 id="officeName">Office Name</h2>
+
+<div class="row">
+<div class="box">
+<h3>Opened</h3>
+<p id="opened">0</p>
+</div>
+
+<div class="box">
+<h3>Closed</h3>
+<p id="closed">0</p>
+</div>
+</div>
+
+<div class="box net">
+<h3>Net Addition</h3>
+<p id="net">0</p>
+</div>
+
+</div>
+
+</div>
+
+<footer>
+Last Updated: Daily
+</footer>
+
+<script>
+
+let data=[];
+
+Papa.parse("data.csv",{
+download:true,
+header:true,
+complete:function(results){
+
+data=results.data;
+
+let select=document.getElementById("officeSelect");
+
+select.innerHTML="<option value=''>Select Office</option>";
+
+data.forEach(function(row){
+
+if(row.Office){
+
+let option=document.createElement("option");
+
+option.value=row.Office;
+
+option.text=row.Office;
+
+select.appendChild(option);
+
+}
+
+});
+
+}
+
+});
+
+document.getElementById("officeSelect").addEventListener("change",function(){
+
+let office=this.value;
+
+let row=data.find(r=>r.Office===office);
+
+if(row){
+
+document.getElementById("officeName").innerHTML=row.Office;
+document.getElementById("opened").innerHTML=row.Opened;
+document.getElementById("closed").innerHTML=row.Closed;
+document.getElementById("net").innerHTML=row.NetAddition;
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
