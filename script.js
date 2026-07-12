@@ -1,40 +1,103 @@
-let data = [];
+let data=[];
 
-Papa.parse("data.csv", {
-    download: true,
-    header: true,
-    skipEmptyLines: true,
+Papa.parse("data.csv",{
 
-    complete: function(results) {
+download:true,
 
-        data = results.data;
+header:true,
 
-        const select = document.getElementById("officeSelect");
-        select.innerHTML = '<option value="">-- Select Office --</option>';
+skipEmptyLines:true,
 
-        data.forEach(row => {
-            if (row.Office) {
-                const option = document.createElement("option");
-                option.value = row.Office;
-                option.textContent = row.Office;
-                select.appendChild(option);
-            }
-        });
+complete:function(results){
 
-    }
-});
+data=results.data;
 
-document.getElementById("officeSelect").addEventListener("change", function () {
+let sub=[...new Set(data.map(x=>x.SubDivision))];
 
-    const office = this.value;
+let subSelect=document.getElementById("subDivision");
 
-    const row = data.find(item => item.Office === office);
+sub.forEach(s=>{
 
-    if (!row) return;
+let op=document.createElement("option");
 
-    document.getElementById("officeName").textContent = row.Office;
-    document.getElementById("opened").textContent = row.Opened;
-    document.getElementById("closed").textContent = row.Closed;
-    document.getElementById("net").textContent = row.NetAddition;
+op.value=s;
+
+op.text=s;
+
+subSelect.appendChild(op);
 
 });
+
+}
+
+});
+
+document.getElementById("subDivision").onchange=function(){
+
+let sub=this.value;
+
+let soSelect=document.getElementById("so");
+
+soSelect.innerHTML="<option>Select SO</option>";
+
+document.getElementById("bo").innerHTML="<option>Select BO</option>";
+
+let sos=[...new Set(data.filter(x=>x.SubDivision==sub).map(x=>x.SO))];
+
+sos.forEach(s=>{
+
+let op=document.createElement("option");
+
+op.value=s;
+
+op.text=s;
+
+soSelect.appendChild(op);
+
+});
+
+}
+
+document.getElementById("so").onchange=function(){
+
+let so=this.value;
+
+let boSelect=document.getElementById("bo");
+
+boSelect.innerHTML="<option>Select BO</option>";
+
+let bos=data.filter(x=>x.SO==so);
+
+bos.forEach(b=>{
+
+let op=document.createElement("option");
+
+op.value=b.BO;
+
+op.text=b.BO;
+
+boSelect.appendChild(op);
+
+});
+
+}
+
+document.getElementById("bo").onchange=function(){
+
+let bo=this.value;
+
+let row=data.find(x=>x.BO==bo);
+
+if(row){
+
+document.getElementById("office").innerHTML=row.BO;
+
+document.getElementById("opened").innerHTML=row.Opened;
+
+document.getElementById("closed").innerHTML=row.Closed;
+
+document.getElementById("net").innerHTML=row.NetAddition;
+
+}
+
+}
